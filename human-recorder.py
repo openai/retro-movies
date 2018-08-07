@@ -47,18 +47,18 @@ def main():
     if args.game is None:
         print('Please specify a game with --game <game>')
         print('Available games:')
-        for game in sorted(retro.list_games()):
+        for game in sorted(retro.data.list_games()):
             print(game)
         sys.exit(1)
 
     if args.state is None:
         print('Please specify a state with --state <state>')
         print('Available states:')
-        for state in sorted(retro.list_states(args.game)):
+        for state in sorted(retro.data.list_states(args.game)):
             print(state)
         sys.exit(1)
 
-    env = retro.make(game=args.game, state=args.state, use_restricted_actions=retro.ACTIONS_ALL, scenario=args.scenario)
+    env = retro.make(game=args.game, state=args.state, use_restricted_actions=retro.Actions.ALL, scenario=args.scenario)
     obs = env.reset()
     screen_height, screen_width = obs.shape[:2]
 
@@ -175,7 +175,7 @@ def main():
             'MODE': keycodes.TAB in keys_pressed or buttoncodes.SELECT in buttons_pressed,
             'START': keycodes.ENTER in keys_pressed or buttoncodes.START in buttons_pressed,
         }
-        action = [inputs[b] for b in env.BUTTONS]
+        action = [inputs[b] for b in env.buttons]
 
         if steps % SAVE_PERIOD == 0:
             recorded_states.append((steps, env.em.get_state()))
