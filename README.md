@@ -1,3 +1,5 @@
+**Status:** Archive (code is provided as-is, no updates expected)
+
 # retro-movies
 
 This is a collection of human demonstrations of [gym-retro](https://github.com/openai/retro) games in BK2 format.  Right now it consists only of a single demonstration for each level of the [Sonic Benchmark](https://arxiv.org/abs/1804.03720) used by the [Retro Contest](https://contest.openai.com/). These recordings can be used to have the agent start playing from random points sampled from the course of each level, exposing the agent to a lot of areas it may not have seen if it only started from the beginning of the level.
